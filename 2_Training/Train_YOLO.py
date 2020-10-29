@@ -122,7 +122,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--is_tiny",
-        default=False,
+        default=True,
         action="store_true",
         help="Use the tiny Yolo version for better performance and less accuracy. Default is False.",
     )
@@ -170,6 +170,9 @@ if __name__ == "__main__":
 
     input_shape = (416, 416)  # multiple of 32, height, width
     epoch1, epoch2 = FLAGS.epochs, FLAGS.epochs
+    #made this adjustment to guard against np.nan. 
+    epoch1= 51
+    #epoch2= 10
 
     is_tiny_version = len(anchors) == 6  # default setting
     if FLAGS.is_tiny:
